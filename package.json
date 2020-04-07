@@ -1,0 +1,42 @@
+{
+  "name": "perguntas_respostas",
+  "version": "1.0.0",
+  "description": "Estudo de caso com NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "dev": "npm run development && npm run start",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/mvanucci/perguntas_respostas.git"
+  },
+  "keywords": [],
+  "author": "Murilo Vanucci",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/mvanucci/perguntas_respostas#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.6"
+  },
+  "devDependencies": {
+    "bootstrap": "^4.4.1",
+    "cross-env": "^7.0.2",
+    "jquery": "^3.4.1",
+    "laravel-mix": "^5.0.4",
+    "lodash": "^4.17.15",
+    "popper.js": "^1.16.1",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "^1.26.3",
+    "sass-loader": "^8.0.2",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
