@@ -25,7 +25,7 @@
     "ejs": "^3.1.9",
     "express": "^4.22.1",
     "mysql2": "^3.9.8",
-    "sequelize": "^6.35.2"
+    "sequelize": "^6.37.8"
   },
   "devDependencies": {
     "bootstrap": "^5.3.2",
