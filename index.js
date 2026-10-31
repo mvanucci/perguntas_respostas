@@ -5,14 +5,6 @@ const connection = require('./database/database');
 const Pergunta = require('./database/Pergunta');
 const Resposta = require('./database/Resposta');
 
-//Database
-connection
-        .authenticate().then(() => {
-                console.log("Conectado com sucesso na base de dados.");
-        }).catch((err) => {
-                console.log(err + "Deu errado a minha conexão =(");
-        });
-
 //Configurando o EJS.
 app.set('view engine', 'ejs');
 
@@ -91,4 +83,17 @@ app.post('/responder', (req, res) => {
         })
 });
 
-app.listen(8080, () => { console.log('App rodando'); });
+// Prepare as tabelas antes de aceitar requisições.
+async function start() {
+    try {
+        await connection.authenticate();
+        await connection.sync({ force: false });
+        app.listen(8080, () => { console.log('App rodando na porta 8080 com SQLite'); });
+    } catch (err) {
+        console.error('Erro ao inicializar o banco SQLite:', err);
+        await connection.close();
+        process.exitCode = 1;
+    }
+}
+
+start();

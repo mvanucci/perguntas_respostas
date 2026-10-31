@@ -4,13 +4,14 @@
   "description": "Estudo de caso com NodeJS",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
-    "dev": "npm run development && npm run start",
-    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "watch": "npm run development -- --watch",
-    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "test": "node --test scripts/test-sqlite.js",
+    "start": "node --watch index.js",
+    "dev": "npm run development && npm start",
+    "development": "node scripts/build.js",
+    "watch": "node scripts/build.js --watch",
+    "hot": "npm run watch",
     "prod": "npm run production",
-    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+    "production": "node scripts/build.js --production"
   },
   "repository": {
     "type": "git",
@@ -21,22 +22,31 @@
   "license": "ISC",
   "homepage": "https://bitbucket.org/mvanucci/perguntas_respostas#readme",
   "dependencies": {
-    "body-parser": "^1.20.5",
-    "ejs": "^3.1.9",
-    "express": "^4.22.2",
-    "mysql2": "^3.23.1",
-    "sequelize": "^6.37.8"
+    "body-parser": "^2.4.0",
+    "ejs": "^7.0.2",
+    "express": "^5.3.0",
+    "sequelize": "^6.37.8",
+    "sqlite3": "^6.0.1"
   },
   "devDependencies": {
-    "bootstrap": "^5.3.2",
-    "cross-env": "^7.0.3",
-    "jquery": "^3.7.1",
-    "laravel-mix": "^6.0.49",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.8",
+    "esbuild": "^0.28.2",
+    "jquery": "^4.0.0",
     "lodash": "^4.18.1",
-    "popper.js": "^1.16.1",
-    "resolve-url-loader": "^5.0.0",
-    "sass": "^1.69.7",
-    "sass-loader": "^14.0.0",
-    "vue-template-compiler": "^2.7.16"
+    "sass": "^1.107.1"
+  },
+  "overrides": {
+    "sequelize": {
+      "uuid": "^11.1.1"
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "@parcel/watcher@2.6.0": true,
+    "sqlite3@6.0.1": true
   }
 }
